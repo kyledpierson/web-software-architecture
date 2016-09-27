@@ -1,0 +1,3 @@
+<?php
+$dbpassword = 'hello';
+?>

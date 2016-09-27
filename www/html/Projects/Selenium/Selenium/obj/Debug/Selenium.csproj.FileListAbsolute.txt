@@ -1,0 +1,10 @@
+c:\users\kyle\documents\visual studio 2013\Projects\Selenium\Selenium\bin\Debug\Selenium.exe.config
+C:\Users\Kyle\documents\visual studio 2013\Projects\Selenium\Selenium\obj\Debug\Selenium.csprojResolveAssemblyReference.cache
+C:\Users\Kyle\documents\visual studio 2013\Projects\Selenium\Selenium\bin\Debug\Selenium.exe
+C:\Users\Kyle\documents\visual studio 2013\Projects\Selenium\Selenium\bin\Debug\Selenium.pdb
+C:\Users\Kyle\documents\visual studio 2013\Projects\Selenium\Selenium\bin\Debug\Selenium.WebDriverBackedSelenium.dll
+C:\Users\Kyle\documents\visual studio 2013\Projects\Selenium\Selenium\bin\Debug\ThoughtWorks.Selenium.Core.dll
+C:\Users\Kyle\documents\visual studio 2013\Projects\Selenium\Selenium\bin\Debug\WebDriver.dll
+C:\Users\Kyle\documents\visual studio 2013\Projects\Selenium\Selenium\bin\Debug\WebDriver.Support.dll
+C:\Users\Kyle\documents\visual studio 2013\Projects\Selenium\Selenium\obj\Debug\Selenium.exe
+C:\Users\Kyle\documents\visual studio 2013\Projects\Selenium\Selenium\obj\Debug\Selenium.pdb

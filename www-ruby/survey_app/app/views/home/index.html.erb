@@ -1,0 +1,21 @@
+<div class="center jumbotron">
+  <h1>Welcome to the Survey Application!</h1>
+  
+  <h2>Here you can take and create surveys</h1>
+<% if logged_in? %>
+
+<h3>You are already logged in<h3>
+
+<%= link_to "Log out", logout_path, method: "delete", class: "btn btn-lg btn-primary", id: "white_body"%>
+
+<% else %>
+<%= link_to "Sign up here", signup_path, class: "btn btn-lg btn-primary", id: "white_body" %>
+<%= link_to "Login here", login_path, class: "btn btn-lg btn-default" %>
+<% end %>
+</div>
+
+<p>
+  This site is dedicated to those who want answers to life's greatest questions.  Anyone can sign up for free, and then can create surveys to find out what the world thinks of any given topic.  Because if the majority of the population is in favor of a certain opinion, then that opinion must be right.<br><br>
+  
+  Isn't it about time you started getting answers?
+</p>

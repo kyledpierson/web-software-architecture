@@ -1,0 +1,24 @@
+AUTHORS: Alfred Norm Gifford and Kyle Pierson
+DATE:    23 April 2015
+PROJECT: Ruby On Rails Web Application - A Survey App
+VERSION: 1.0
+
+We made use of the Ruby on Rails Tutorial located at https://www.railstutor
+ial.org/book.  Special thanks to Michael Hartl (author of the book and webp
+age) for the great tutorial.<br>
+
+To run the server, simply run the command:
+
+rails server -b 
+
+The first step is to sign up as a new user.  Once you are signed up (or log
+ged in), you will be able to see all current surveys as well as create your
+ own.  The navbar at the top lets you navigate through these options, as we
+ll as see your profile and logout.
+
+Shortcomings:
+There are a couple shortcomings to this website.  The first is that you can
+ vote for a survey as many times as you want.  The second is that we are no
+t displaying the users that submitted each survey.  Nevertheless, the requi
+rement of being logged on as a user in order to see/submit surveys  still r
+emains in tact.

@@ -1,0 +1,11 @@
+
+Author: H. James de St. Germain
+Date:   Spring 2015
+
+This example shows two uses of JSON (and AJAX)
+
+1) use the dform library to build a form based on a sepcification in JSON
+
+2) use AJAX and JSON to send an "object" which is can be used in Javascript code
+   Note: in our case, we simply take the data from the object and put it in a table.
+

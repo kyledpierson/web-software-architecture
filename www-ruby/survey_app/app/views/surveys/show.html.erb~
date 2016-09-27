@@ -1,0 +1,11 @@
+<p>
+<h1>Your survey has been created!<h1>
+
+  <strong>Title:</strong>
+  <%= @survey.title %>
+</p>
+ 
+<p>
+  <strong>Question:</strong>
+  <%= @survey.question %>
+</p>

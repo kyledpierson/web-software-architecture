@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+
+.current
+{
+	font-weight: bold;
+}
+
+.error 
+{
+	color:red;
+}
+
+
+
+.saved
+{
+	color:blue;
+	font-weight: bold;
+}
+
+

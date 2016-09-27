@@ -1,0 +1,39 @@
+Mon, 04 Feb 2013 07:16:29 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '178' for key 'PRIMARY'
+
+Mon, 11 Feb 2013 03:29:07 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:29:55 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:32:15 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:35:15 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:35:20 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:35:43 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:36:56 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:37:12 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:37:44 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:39:53 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Wed, 13 Feb 2013 06:29:45 +0100
+SQLSTATE[HY000] [1045] Access denied for user 'cs4540-software'@'97-117-89-233.slkc.qwest.net' (using password: NO)#0 C:\Documents and Settings\zachary\workspace\GSC13\v4\application\db.php(8): PDO->__construct('mysql:host=atr....', 'cs4540-software', NULL)
+#1 C:\Documents and Settings\zachary\workspace\GSC13\v4\application\db.php(56): openDBConnection()
+#2 C:\Documents and Settings\zachary\workspace\GSC13\v4\order.php(10): getCookieTypes()
+#3 {main}
+

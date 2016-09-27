@@ -1,0 +1,471 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="utf-8" http-equiv="encoding"/>
+    <title>Button Example </title>
+    
+    <!-- THIS FIRST -->
+    <script src="jquery-1.11.2.min.js"></script> <!-- 1 - JQUERY -->
+    <script src="../Chat/pixi.dev.js"></script>  <!-- 2 - Pixi -->
+    <script src="../Chat/button.js"></script>
+    
+</head>
+
+<body>
+
+  <div class="c4"> </div>
+
+
+<script>
+var stage;  // pixi stage - the drawing area
+var renderer;   // create a renderer instance
+var button2;
+var faceForDieOne;
+var faceForDieTwo;
+var faceForDieThree;
+var faceForDieFour;
+var faceForDieFive;
+var faceForDieSix;
+var cubeForDieOne;
+var cubeForDieTwo;
+var cubeForDieThree;
+var cubeForDieFour;
+var cubeForDieFive;
+var cubeForDieSix;
+var player1Name;
+var player2Name;
+var player3Name;
+var player4Name;
+var player1Score;
+var player2Score;
+var player3Score;
+var player4Score;
+var p1text_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p2text_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p3text_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p4text_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p1Scoretext_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p2Scoretext_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p3Scoretext_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p4Scoretext_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var lockRoll = false;
+stage = new PIXI.Stage(0x57A52E);
+stage.interactive = true;
+renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, null);
+document.body.appendChild(renderer.view);     // add the renderer view element to the DOM
+
+requestAnimFrame( animate );
+
+function currentPlayer(currentPlayer)
+{
+    if(currentPlayer == 1)
+    {
+        p1text_field_= new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"red", dropShadow:"true"});
+        p1Scoretext_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"red", dropShadow:"true"});
+        p1text_field_.setText( player1Name);
+        p1text_field_.position.y = (window.innerHeight)-(window.innerHeight);
+        stage.addChild(p1text_field_);
+        p1Scoretext_field_.setText(player1Score);
+        p1Scoretext_field_.position.y = (window.innerHeight)-(window.innerHeight);
+        p1Scoretext_field_.position.x = (window.innerWidth)-700;
+        stage.addChild(p1Scoretext_field_);
+
+    }
+    if(currentPlayer == 2)
+    {
+        p2text_field_= new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"red", dropShadow:"true"});
+        p2Scoretext_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"red", dropShadow:"true"});
+        p2text_field_.setText( player2Name);
+        p2text_field_.position.y = (window.innerHeight)-(window.innerHeight)+100;
+        stage.addChild(p2text_field_);
+        p2Scoretext_field_.setText(player2Score);
+        p2Scoretext_field_.position.y = (window.innerHeight)-(window.innerHeight)+100;
+        p2Scoretext_field_.position.x = (window.innerWidth)-700;
+        stage.addChild(p2Scoretext_field_);
+    }
+    if(currentPlayer == 3)
+    {
+        p3text_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"red", dropShadow:"true"});
+        p3Scoretext_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"red", dropShadow:"true"});
+        p3text_field_.setText( player3Name);
+        p3text_field_.position.y = (window.innerHeight)-(window.innerHeight)+200;
+        stage.addChild(p3text_field_);
+        p3Scoretext_field_.setText(player3Score);
+        p3Scoretext_field_.position.y = (window.innerHeight)-(window.innerHeight)+200;
+        p3Scoretext_field_.position.x = (window.innerWidth)-700;
+        stage.addChild(p3Scoretext_field_);
+    }
+    if(currentPlayer == 4)
+    {
+        p4text_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"red", dropShadow:"true"});
+        p4Scoretext_field_ = new PIXI.Text("hello", {font:"60pt Arial", align:"center", fill:"red", dropShadow:"true"});
+        p4text_field_.setText( player4Name);
+        p4text_field_.position.y = (window.innerHeight)-(window.innerHeight)+300;
+        stage.addChild(p4text_field_);
+        p4Scoretext_field_.setText(player4Score);
+        p4Scoretext_field_.position.y = (window.innerHeight)-(window.innerHeight)+300;
+        p4Scoretext_field_.position.x = (window.innerWidth)-700;
+        stage.addChild(p4Scoretext_field_);
+    }
+}
+
+function playersAndScore(player1, score1, player2, score2, player3, score3, player4, score4)
+{
+    if(player1 == "")
+    {
+        p1text_field_.setText( "Player1");
+        
+        p1Scoretext_field_.setText(score1);
+        p1Scoretext_field_.position.y = (window.innerHeight)-(window.innerHeight);
+        p1Scoretext_field_.position.x = (window.innerWidth)-700;
+        stage.addChild(p1Scoretext_field_);
+        p1text_field_.position.y = (window.innerHeight)-(window.innerHeight);
+
+        stage.addChild(p1text_field_);
+        player1Name = "Player1";
+        player1Score = score1;
+    }
+    else
+    {
+        p1text_field_.setText(player1);
+        
+        p1text_field_.position.y = (window.innerHeight)-(window.innerHeight);
+        stage.addChild(p1text_field_);
+        p1Scoretext_field_.setText(score1);
+        p1Scoretext_field_.position.y = (window.innerHeight)-(window.innerHeight);
+        p1Scoretext_field_.position.x = (window.innerWidth)-700;
+        stage.addChild(p1Scoretext_field_);
+        player1Score = score1;
+        player1Name = player1;
+    }
+    if(player2 == "")
+    {
+        p2text_field_.setText( "Player2");
+        p2text_field_.position.y = (window.innerHeight)-(window.innerHeight)+100;
+        stage.addChild(p2text_field_);
+        p2Scoretext_field_.setText(score2);
+        p2Scoretext_field_.position.y = (window.innerHeight)-(window.innerHeight)+100;
+        p2Scoretext_field_.position.x = (window.innerWidth)-700;
+        stage.addChild(p2Scoretext_field_);
+        player2Score = score2;
+        player2Name = "Player2";
+    }
+    else
+    {
+        p2text_field_.setText(player2);
+        p2text_field_.position.y = (window.innerHeight)-(window.innerHeight)+100;
+        stage.addChild(p2text_field_);
+        p2Scoretext_field_.setText(score2);
+        p2Scoretext_field_.position.y = (window.innerHeight)-(window.innerHeight)+100;
+        p2Scoretext_field_.position.x = (window.innerWidth)-700;
+        stage.addChild(p2Scoretext_field_);
+        player2Name = player2;
+        player2Score = score2;
+    }if(player3 == "")
+    {
+        p3text_field_.setText( "Player3");
+        p3text_field_.position.y = (window.innerHeight)-(window.innerHeight)+200;
+        stage.addChild(p3text_field_);
+        p3Scoretext_field_.setText(score3);
+        p3Scoretext_field_.position.y = (window.innerHeight)-(window.innerHeight)+200;
+        p3Scoretext_field_.position.x = (window.innerWidth)-700;
+        stage.addChild(p3Scoretext_field_);
+        player3Name = "Player3";
+        player3Score = score3;
+    }
+    else
+    {
+        p3text_field_.setText(player3);
+        p3text_field_.position.y = (window.innerHeight)-(window.innerHeight)+200;
+        stage.addChild(p3text_field_);
+        p3Scoretext_field_.setText(score3);
+        p3Scoretext_field_.position.y = (window.innerHeight)-(window.innerHeight)+200;
+        p3Scoretext_field_.position.x = (window.innerWidth)-700;
+        stage.addChild(p3Scoretext_field_);
+        player3Name = player3;
+        player3Score = score3;
+    }if(player4 == "")
+    {
+        p4text_field_.setText( "Player4");
+        p4text_field_.position.y = (window.innerHeight)-(window.innerHeight)+300;
+        stage.addChild(p4text_field_);
+        p4Scoretext_field_.setText(score4);
+        p4Scoretext_field_.position.y = (window.innerHeight)-(window.innerHeight)+300;
+        p4Scoretext_field_.position.x = (window.innerWidth)-700;
+        stage.addChild(p4Scoretext_field_);
+        player4Score = score4;
+        player4Name = "Player4";
+    }
+    else
+    {
+        p4text_field_.setText(player4);
+        p4text_field_.position.y = (window.innerHeight)-(window.innerHeight)+300;
+        stage.addChild(p4text_field_);
+        p4Scoretext_field_.setText(score4);
+        p4Scoretext_field_.position.y = (window.innerHeight)-(window.innerHeight)+300;
+        p4Scoretext_field_.position.x = (window.innerWidth)-700;
+        stage.addChild(p4Scoretext_field_);
+        player4Score = score4;
+        player4Name = player4;
+    }
+}
+
+
+function diefaceOne()
+{
+    
+    stage.removeChild(cubeForDieOne);
+    stage.addChild(faceForDieOne);
+    
+}
+function cubefaceone()
+{
+    stage.addChild(cubeForDieOne);
+    stage.removeChild(faceForDieOne);
+}
+function diefaceTwo()
+{
+    stage.removeChild(cubeForDieTwo);
+    stage.addChild(faceForDieTwo);
+}
+function cubefacetwo()
+{
+    stage.addChild(cubeForDieTwo);
+    stage.removeChild(faceForDieTwo);
+}
+function diefaceThree()
+{
+    stage.removeChild(cubeForDieThree);
+    stage.addChild(faceForDieThree);
+}
+function cubefacethree()
+{
+    stage.addChild(cubeForDieThree);
+    stage.removeChild(faceForDieThree);
+}
+function dicefaceFour()
+{
+    stage.removeChild(cubeForDieFour);
+    stage.addChild(faceForDieFour);
+}
+function cubefacefour()
+{
+    stage.addChild(cubeForDieFour);
+    stage.removeChild(faceForDieFour);
+}
+function diefaceFive()
+{
+    stage.removeChild(cubeForDieFive);
+    stage.addChild(faceForDieFive);
+}
+function cubefacefive()
+{
+    stage.addChild(cubeForDieFive);
+    stage.removeChild(faceForDieFive);
+}
+function diefaceSix()
+{
+    stage.removeChild(cubeForDieSix);
+    stage.addChild(faceForDieSix);
+}
+function cubefacesix()
+{
+    stage.addChild(cubeForDieSix);
+    stage.removeChild(faceForDieSix);
+}
+function roll_all_dice()
+{
+    roll_dice(6,6,6,6,6,6);
+    playersAndScore("",1,"",2,"",3,"",4);
+    currentPlayer(1);
+}
+
+
+function start_button_example()
+{
+    var button = new Button_Sprite( stage, 20, 20, roll_all_dice, 0, false,0);
+
+    button.position.x = (window.innerWidth)-300;
+    button.position.y = (window.innerHeight)-300;
+    
+}
+function roll_dice(die1, die2, die3, die4, die5, die6)
+{
+    if(!lockRoll)
+    {
+    if(die1 > 0)
+    {
+
+        faceForDieOne = new Button_Sprite(stage, 20, 20, cubefaceone, 1, true, die1);
+        faceForDieOne.position.x=50;
+    faceForDieOne.position.y=(window.innerHeight)-100;
+    faceForDieOne.scale.x = 0.25;
+    faceForDieOne.scale.y = 0.25;
+    stage.removeChild(faceForDieOne);
+
+    cubeForDieOne = new Button_Sprite(stage, 20, 20, diefaceOne, 7, false, die1);
+
+    cubeForDieOne.position.x = (window.innerWidth/2)+(window.innerWidth/4);
+    cubeForDieOne.position.y = (window.innerHeight/7);
+    cubeForDieOne.scale.x = 0.25;
+    cubeForDieOne.scale.y = 0.25;
+
+
+    }
+    else
+    {
+        stage.removeChild(faceForDieOne);
+        stage.removeChild(cubeForDieOne);
+    }
+    if(die2>0)
+    {
+        faceForDieTwo = new Button_Sprite(stage, 20, 20, cubefacetwo, 2, true, die2);
+    faceForDieTwo.position.x=150;
+    faceForDieTwo.position.y=(window.innerHeight)-100;
+    faceForDieTwo.scale.x = 0.25;
+    faceForDieTwo.scale.y = 0.25;
+    stage.removeChild(faceForDieTwo);
+
+    cubeForDieTwo = new Button_Sprite(stage, 20, 20, diefaceTwo, 8, false, die2);
+
+    cubeForDieTwo.position.x = (window.innerWidth/2)+(window.innerWidth/4) + 20;
+    cubeForDieTwo.position.y = (window.innerHeight/7) + 100;
+    cubeForDieTwo.scale.x = 0.25;
+    cubeForDieTwo.scale.y = 0.25;
+    }
+    else
+    {
+        stage.removeChild(faceForDieTwo);
+        stage.removeChild(cubeForDieTwo);
+    }
+    if(die3>0)
+    {
+        faceForDieThree = new Button_Sprite(stage, 20, 20, cubefacethree, 3, true, die3);
+    faceForDieThree.position.x=250;
+    faceForDieThree.position.y=(window.innerHeight)-100;
+    faceForDieThree.scale.x = 0.25;
+    faceForDieThree.scale.y = 0.25;
+    stage.removeChild(faceForDieThree);
+
+    cubeForDieThree = new Button_Sprite(stage, 20, 20, diefaceThree, 9, false, die3);
+
+    cubeForDieThree.position.x = (window.innerWidth/2)+(window.innerWidth/4);
+    cubeForDieThree.position.y = (window.innerHeight/7) + 190;
+    cubeForDieThree.scale.x = 0.25;
+    cubeForDieThree.scale.y = 0.25;
+    }
+    else
+    {
+        stage.removeChild(faceForDieThree);
+        stage.removeChild(cubeForDieThree);
+    }
+    if(die4>0)
+    {
+        faceForDieFour = new Button_Sprite(stage, 20, 20, cubefacefour, 4, true, die4);
+    faceForDieFour.position.x=350;
+    faceForDieFour.position.y=(window.innerHeight)-100;
+    faceForDieFour.scale.x = 0.25;
+    faceForDieFour.scale.y = 0.25;
+    stage.removeChild(faceForDieFour);
+
+    cubeForDieFour = new Button_Sprite(stage, 20, 20, dicefaceFour, 10, false, die4);
+
+    cubeForDieFour.position.x = (window.innerWidth/2)+(window.innerWidth/4) -100;
+    cubeForDieFour.position.y = (window.innerHeight/7) + 110;
+    cubeForDieFour.scale.x = 0.25;
+    cubeForDieFour.scale.y = 0.25;
+    }
+    else
+    {
+        stage.removeChild(faceForDieFour);
+        stage.removeChild(cubeForDieFour);
+    }
+    if(die5>0)
+    {
+        faceForDieFive = new Button_Sprite(stage, 20, 20, cubefacefive, 5, true, die5);
+    faceForDieFive.position.x=450;
+    faceForDieFive.position.y=(window.innerHeight)-100;
+    faceForDieFive.scale.x = 0.25;
+    faceForDieFive.scale.y = 0.25;
+    stage.removeChild(faceForDieFive);
+
+    cubeForDieFive = new Button_Sprite(stage, 20, 20, diefaceFive, 11, false, die5);
+
+    cubeForDieFive.position.x = (window.innerWidth/2)+(window.innerWidth/4) - 150;
+    cubeForDieFive.position.y = (window.innerHeight/7) + 290;
+    cubeForDieFive.scale.x = 0.25;
+    cubeForDieFive.scale.y = 0.25;
+    }
+    else
+    {
+        stage.removeChild(faceForDieFive);
+        stage.removeChild(cubeForDieFive);
+    }
+    if(die6>0)
+    {
+        faceForDieSix = new Button_Sprite(stage, 20, 20, cubefacesix, 6, true, die6);
+    faceForDieSix.position.x=550;
+    faceForDieSix.position.y=(window.innerHeight)-100;
+    faceForDieSix.scale.x = 0.25;
+    faceForDieSix.scale.y = 0.25;
+    stage.removeChild(faceForDieSix);
+
+    cubeForDieSix = new Button_Sprite(stage, 20, 20, diefaceSix, 12, false, die6);
+
+    cubeForDieSix.position.x = (window.innerWidth/2)+(window.innerWidth/4) + 100;
+    cubeForDieSix.position.y = (window.innerHeight/7) + 200;
+    cubeForDieSix.scale.x = 0.25;
+    cubeForDieSix.scale.y = 0.25;
+    }
+    else
+    {
+        stage.removeChild(faceForDieSix);
+        stage.removeChild(cubeForDieSix);
+    }
+    lockRoll = true;
+}
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+}
+
+
+//
+// this function is called before every browser/canvas repaint
+// approximately 30 or 60 times per second
+//
+// by putting requestAnimFrame(animate) in here, we cause an animation loop
+//
+function animate()
+{
+    requestAnimFrame(animate);
+
+    renderer.render(stage);     // render the stage
+
+}
+
+$(function () 
+{
+
+var loader = new PIXI.AssetLoader(["die1.png","die2.png","die3.png","die4.png","die5.png","die6.png","selectedDie1.png","selectedDie2.png","selectedDie3.png","selectedDie4.png","selectedDie5.png","selectedDie6.png", "oneFace.png","twoFace.png","threeFace.png","fourFace.png","fiveFace.png","sixFace.png","selectedOneFace.png", "selectedTwoFace.png","selectedThreeFace.png","selectedFourFace.png","selectedFiveFace.png","selectedSixFace.png","shaker.png","selectedShaker.png"]);
+//var loader = new PIXI.AssetLoader(["die1.png","selectedDie1.png","die2.png","selectedDie2.png","die3.png","selectedDie3.png","die4.png","selectedDie4.png" "shaker.png","selectedShaker.png"]);
+loader.onComplete = start_button_example;
+loader.load();
+
+});
+
+</script>
+</body>
+
+</html>

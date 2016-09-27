@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="utf-8" http-equiv="encoding"/>
+    <title>Farkle</title>
+    
+    <!-- THIS FIRST -->
+    <script src="jquery-1.11.2.min.js"></script> <!-- 1 - JQUERY -->
+    <script type="text/javascript" src="jquery-2.1.3.js"></script> 
+    <script src="pixi.dev.js"></script>  <!-- 2 - Pixi -->
+    <!-- <script src="button.js"></script> -->
+
+       <style type="text/css">
+    /*
+ * Specific styles of signin component
+ */
+/*
+ * General styles
+ */
+
+body, html {background-color: #57a52e;}
+
+.waitingField {
+    width: 100px;
+}
+.loginField{
+	width: 400px;
+	/*padding: 40px 40px;*/
+}
+
+.Play_recFieldButton {
+    font-weight: 700;
+    width: 200px;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+/*
+ * Card component
+ */
+.waitingField {
+    background-color: #DE4242;
+    /* just in case there no content*/
+    /*padding: 1px 5px 2px;*/
+    margin: 0 auto 1px;
+    margin-top: 1px;
+    width: 200px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+.loginField{
+	background-color: #F7F7F7;
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+
+}
+
+
+
+/*
+ * Form styles
+ */
+
+
+
+
+.userName {
+    direction: ltr;
+    height: 26px;
+    font-size: 26px;
+}
+
+.userName,
+.Play_recFieldButton button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.userName:focus {
+    border-color: rgb(104, 145, 162);
+    outline: 0;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+}
+
+/*.waitingField {
+    padding: 5px 5px;
+}*/
+
+.Play_recFieldButton {
+    /*background-color: #4d90fe; */
+    background-color: #359DE7;
+    width: 100%;
+    /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+    padding: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    height: 50px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+}
+h1, h2, h4 {text-align: center;}
+
+.Play_recFieldButton:hover,
+.Play_recFieldButton:active,
+.Play_recFieldButton:focus {
+    background-color: rgb(104, 145, 162);
+}
+
+
+
+
+    </style>
+    
+</head>
+
+<body>
+	
+<fieldset class="loginField">
+<H1 class="header">Farkle</H1>
+</br>
+	<h2 class="welcome">Welcome please enter a user name.</h2>
+</br>
+<input type="text" class="userName">
+</br>
+
+
+
+<div class="input_recFields_wrap">
+    <button class="Play_recFieldButton" value="recButton">Play</button>
+</div></fieldset>
+<script>$(document).ready(function() {
+    var recMaxx_fields      = 1; //maximum input boxes allowed
+    var recWrapper         = $(".input_recFields_wrap"); //Fields recWrapper
+    var Play_rec_button      = $(".Play_recFieldButton"); //Add button ID
+    
+    var x = 0; //initlal text box count
+    $(Play_rec_button).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < recMaxx_fields){ //max input box allowed
+            x++; //text box increment
+            $(recWrapper).append('<div><fieldset class="waitingField"><h4 class="waitingLabel">Waiting for other players.</h4></div>'); //add input box
+        }
+    });
+    $(recWrapper).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div fieldset').remove(); x--;
+    })
+});</script>
+
+
+
+
+
+</body>

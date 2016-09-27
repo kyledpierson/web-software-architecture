@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+
+/*
+ *
+ * Author: Joe Zachary
+ *         H. James de St. Germain (Modified Spring 2014)
+ *
+ * Simple examples of styling
+ *
+ */
+
+h2 {color:red;}
+
+.gameboard input {height:50px; width:50px; background-color:black;}
+
+.controls input {background-color:red; color:white;}
+

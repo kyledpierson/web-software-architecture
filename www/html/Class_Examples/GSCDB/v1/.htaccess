@@ -1,0 +1,13 @@
+
+#
+# HT Access tells the web server who is allowed access to a page (among 
+#                   other things, such as what is the main page, etc.)
+# 
+
+
+#
+# When this directory is loaded, 
+# instead of finding the default index.php/index.html
+# file, find the order.php file
+#
+DirectoryIndex order.php

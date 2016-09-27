@@ -1,0 +1,29 @@
+{
+  "comments" :    "       Author: Example code written by David Luecke",
+  "comments" :    "       Prof  : H. James de St. Germain",
+  "comments" :    "       Date  : Spring 2015",
+  "comments" :    "        This is an example of a JSON object which can be utilized by the dform",
+  "comments" :    "       library to build a form wihtout you having to write HTML...",
+    
+    "onsubmit" : "return get_and_display_json()",
+    "method" : "get",
+    "html" :
+    [
+      {
+        "type" : "p",
+        "html" : "This Form was built by DFORM using a JSON object.  To get more JSON click submit"
+      },
+      {
+        "name" 		: "username",
+        "id" 		: "txt-username",
+        "caption"	: "Who are you?",
+        "type" 		: "text",
+        "placeholder"	: "e.g., Jim"
+      },
+      {
+        "type" 		: "submit",
+        "value"		: "Show Me More"
+      }
+    ]
+}
+

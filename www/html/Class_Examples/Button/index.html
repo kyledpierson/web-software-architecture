@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="utf-8" http-equiv="encoding"/>
+    <title>Button Example </title>
+    
+    <!-- THIS FIRST -->
+    <script src="jquery-1.11.2.min.js"></script> <!-- 1 - JQUERY -->
+    <script src="pixi.dev.js"></script>  <!-- 2 - Pixi -->
+    <script src="button.js"></script>
+    
+</head>
+
+<body>
+
+  <div class="c4"> </div>
+
+
+<script>
+var stage;  // pixi stage - the drawing area
+var renderer;   // create a renderer instance
+
+function doit()
+{
+  $("body").append("hello");
+}
+
+
+function start_button_example()
+{
+
+    stage = new PIXI.Stage(0x57A52E);
+    stage.interactive = true;
+    renderer = PIXI.autoDetectRenderer(window.innerWidth, 300, null);
+    document.body.appendChild(renderer.view);     // add the renderer view element to the DOM
+
+    requestAnimFrame( animate );
+
+    var button = new Button_Sprite( stage, "Welcome CS 4540", 400, 200, doit, 0, false);
+
+    button.position.x = (window.innerWidth/2)-200;
+    button.position.y = 50;
+
+
+}
+
+
+//
+// this function is called before every browser/canvas repaint
+// approximately 30 or 60 times per second
+//
+// by putting requestAnimFrame(animate) in here, we cause an animation loop
+//
+function animate()
+{
+    requestAnimFrame(animate);
+
+    renderer.render(stage);     // render the stage
+
+}
+
+$(function () 
+{
+
+var loader = new PIXI.AssetLoader(["button.png","button_over.png","button_down.png"]);
+loader.onComplete = start_button_example;
+loader.load();
+
+});
+
+</script>
+</body>
+
+</html>

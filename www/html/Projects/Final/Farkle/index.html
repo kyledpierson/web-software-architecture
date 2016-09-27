@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Farkle</title>
+</head>
+
+<!-- Absolute paths because node.js doesn't like relative paths? -->
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" >
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+
+<!-- pixi and application jquery -->
+<script src="pixi.dev.js"></script>
+<script src="button.js"></script>
+<script src="farkleButton.js"></script>
+<script src="game.js"></script>
+<script src="Game/score.js"></script>
+
+<!-- Socket communication functions -->
+<script src="client_send.js"></script>
+<script src="client_receive.js"></script>
+
+<script type="text/javascript" language="JavaScript">
+
+function reverse_show()
+{
+	if(document.getElementById("dis").style.display == "none")
+	{
+		document.getElementById("dis").style.display = "block";
+		document.getElementById("exp").src="Pictures/toggle-collapse.png";
+	}
+	else
+	{
+		document.getElementById("dis").style.display = "none";
+		document.getElementById("exp").src = "Pictures/toggle-expand.png";
+	}
+}
+	
+</script>
+
+<body>
+<ul id="messages"></ul>
+<div id="main">
+  <div id="game">
+	<h1>Welcome to Farkle</h1>
+    Game Lobby:
+    <div id="lobby"></div><br>
+    <form id='join' onSubmit="return join()">
+    	Name:
+        <input id="m" autocomplete="off" autofocus/>
+        <button id="join_button" >Join</button>
+    </form>
+    
+    <div id="toggle" style="float:right;">
+    <label for="exp">Toggle details &nbsp; &nbsp;</label><img src="Pictures/toggle-expand.png" id="exp" onclick="reverse_show()">
+    </div>
+  </div>
+  
+  <div id="dis" style="display:none;">
+  <h3>The Great Game of Farkle</h3>
+  <p>
+  Farkle is a fast paced dice game of busts or big scores.  Score by selecting to keep 1's, 5's, triples, or three pairs.
+    Once you get to 500 points on your turn, you have the option of banking your points.  From then on out, whenever it is
+     your turn, you can bank your points.  Re-roll non-scoring dice to try and get scoring dice.  Be careful, if you roll
+      no scoring dice, you Farkle!  Your turn is then over and you do not score any points.
+  </p>
+  <ul>
+  	<li>1's = 100</li>
+  	<li>5's = 50</li>
+  	<li>Straight = 1500</li>
+  	<li>Three doubles = 1000</li>
+  	<li>Tree of a kind:</li>
+  		<ul>
+  		<li>1 = 1000</li>
+  		<li>2 = 200</li>
+  		<li>3 = 300</li>
+  		<li>4 = 400</li>
+  		<li>5 = 500</li>
+  		<li>6 = 600</li>
+  		</ul>
+  	<li>Four of a kind.</li>
+  		<ul>
+  		<li>1 = 2000</li>
+  		<li>2 = 400</li>
+  		<li>3 = 600</li>
+  		<li>4 = 800</li>
+  		<li>5 = 1000</li>
+  		<li>6 = 1200</li>
+  		</ul>
+  		
+  	<li>Five of a kind</li>
+  		<ul>
+  		<li>1 = 3000</li>
+  		<li>2 = 600</li>
+  		<li>3 = 900</li>
+  		<li>4 = 1200</li>
+  		<li>5 = 1500</li>
+  		<li>6 = 3000</li>
+  		</ul>
+  	<li>Six of a kind</li>
+  		<ul>
+  		<li>1 = 4000</li>
+  		<li>2 = 800</li>
+  		<li>3 = 1200</li>
+  		<li>4 = 1600</li>
+  		<li>5 = 2000</li>
+  		<li>6 = 4000</li>
+  		</ul>
+  </ul>
+  </div>
+</div>
+</body>
+</html>

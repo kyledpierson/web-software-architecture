@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Example Interactions with Echo Server</title>
+<base href="http://localhost:8088"/>
+</head>
+<body>
+
+<p>
+Note: The link and forms below will be submitted to http://localhost:8088.  
+You will need to have the EchoServer running on your local machine for
+the link and forms to work.
+</p>
+
+<p>
+<a href="/give/me/a/file">A hyperlink</a>
+</p>
+
+<p>A form that uses GET:</p>
+
+<form method="get" action="/process/this/form">
+
+  <fieldset>
+
+   <p>
+   <label for="FirstName">First Name</label>
+   <input type="text" id="FirstName" name="FirstName" size=20/>
+   </p>
+   
+   <p>
+   <label for="Like">Like Football?</label>
+   <input type="checkbox" id="Like" name="Like"/>
+   </p>
+   
+   <p>
+   <input type="radio" name="Conference" id="Conference" value="AFC"/>
+   <label for="Conference">AFC</label>
+   <br/>
+   <input type="radio" name="Conference" id="Conference" value="NFC"/>
+   <label for="Conference">NFC</label>
+   </p>
+   
+   <p>
+   <label for="Essay" id="Essay">Why do you watch football?</label><br/>
+   <textarea id="Essay" name="Essay" rows=5 cols=30></textarea>
+   </p>
+   
+   <p>
+   <label for="FavoriteTeam">Favorite Team</label>
+   <select name="FavoriteTeam" id="FavoriteTeam">
+	   <option value="Patriots">Patriots</option>
+	   <option value="Jets">Jets</option>
+	   <option value="Steelers">Steelers</option>
+	   <option value="Ravens">Ravens</option>
+   </select>
+   </p>
+   
+   <input type="hidden" name="FormType" value="Form 1"/>
+   
+   <p>
+   <input type="submit" name="SubmitButton" value="Submit 1"/>
+   </p>
+   
+  </fieldset>
+   
+</form>
+
+<p>A form that uses POST:</p>
+
+<form method="post" action="/process/this/form">
+
+  <fieldset>
+
+   <p>
+   <label for="FirstName">First Name</label>
+   <input type="text" id="FirstName" name="FirstName" size=20/>
+   </p>
+   
+   <p>
+   <label for="Like">Like Football?</label>
+   <input type="checkbox" id="Like" name="Like"/>
+   </p>
+   
+   <p>
+   <input type="radio" name="Conference" id="Conference" value="AFC"/>
+   <label for="Conference">AFC</label>
+   <br/>
+   <input type="radio" name="Conference" id="Conference" value="NFC"/>
+   <label for="Conference">NFC</label>
+   </p>
+   
+   <p>
+   <label for="Essay" id="Essay">Why do you watch football?</label><br/>
+   <textarea id="Essay" name="Essay" rows=5 cols=30></textarea>
+   </p>
+   
+   <p>
+   <label for="FavoriteTeam">Favorite Team</label>
+   <select name="FavoriteTeam" id="FavoriteTeam">
+	   <option value="Patriots">Patriots</option>
+	   <option value="Jets">Jets</option>
+	   <option value="Steelers">Steelers</option>
+	   <option value="Ravens">Ravens</option>
+   </select>
+   </p>
+   
+   <input type="hidden" name="FormType" value="Form 2"/>
+   
+   <p>
+   <input type="submit" name="SubmitButton" value="Submit 2"/>
+   </p>
+   
+  </fieldset>
+   
+</form>
+
+
+<p>A form that uses POST with multipart encoding (and a file upload):</p>
+
+<form method="post" action="/process/this/form"  enctype="multipart/form-data">
+
+  <fieldset>
+
+   <p>
+   <label for="FirstName">First Name</label>
+   <input type="text" id="FirstName" name="FirstName" size=20/>
+   </p>
+   
+   <p>
+   <label for="Like">Like Football?</label>
+   <input type="checkbox" id="Like" name="Like"/>
+   </p>
+   
+   <p>
+   <input type="radio" name="Conference" id="Conference" value="AFC"/>
+   <label for="Conference">AFC</label>
+   <br/>
+   <input type="radio" name="Conference" id="Conference" value="NFC"/>
+   <label for="Conference">NFC</label>
+   </p>
+   
+   <p>
+   <label for="Essay" id="Essay">Why do you watch football?</label><br/>
+   <textarea id="Essay" name="Essay" rows=5 cols=30></textarea>
+   </p>
+   
+   <p>
+   <label for="FavoriteTeam">Favorite Team</label>
+   <select name="FavoriteTeam" id="FavoriteTeam">
+	   <option value="Patriots">Patriots</option>
+	   <option value="Jets">Jets</option>
+	   <option value="Steelers">Steelers</option>
+	   <option value="Ravens">Ravens</option>
+   </select>
+   </p>
+   
+   <p>
+   <label for="Photo">Favorite Photo</label>
+   <input type="file" id="Photo" name="Photo" size=20/>
+   </p>
+   
+   <input type="hidden" name="FormType" value="Form 3"/>
+   
+   <p>
+   <input type="submit" name="SubmitButton" value="Submit 3"/>
+   </p>
+   
+  </fieldset>
+   
+</form>
+</body>
+</html>

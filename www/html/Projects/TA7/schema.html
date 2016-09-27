@@ -1,0 +1,64 @@
+<!--
+
+Author: 	Kyle Pierson
+Date:		26 January 2015
+Version:	1.0
+
+This is the landing page for my Azure website. It includes a menu,
+some box-links, a quote and some images.
+
+-->
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TA Application Home</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	
+	
+<p>
+	
+AUTHORS:	Norm Alfred Gifford and Kyle Pierson<br>
+DATE:		3 February 2015<br>
+ASSIGNMENT:	TA2 – Database Schema<br><br>
+
+The following page outlines the details of our database schema for the TA application website.<br><br>
+
+<img src="http://uofu-cs4540-57.cloudapp.net/Projects/TA2/database.png"/><br><br>
+ 
+First, there is a table for all users of the website.  This includes applicants, administrators, and teachers.  The information needed for these users is a unique user id, user name, email, password, and status (or role).  However, we are going to want extra information about the applicants, so a separate table is created for this information.  In fact, their entering of this information is the first step in the application process.<br><br>
+
+First, applicants enter in their gpa, major, academic level, phone, and complete address.  Once they click “submit”, a timestamp is recorded in the database for that row, and is used alongside the user id as the key, and the value for the “valid_info” column is set to 1.  Applicants can now avoid entering in this information again for future applications if they so choose, as it is essentially their “profile” information.  Some of the information (such as gpa and academic level) is subject to change, and applicants will always have the option to update the information.  However, once they submit updated information, the new information will be entered as a new row with a new timestamp.  The database will then check to see if another row for that user with a valid bit of 1 exists in the database.  If another valid row for that user exists, the valid bit for that row is set to 0, and the brand new row’s valid bit is set to 1.  This means that information on a single applicant can exist multiple times in this table, but when displaying it to the user, only the row with a valid bit of 1 will be shown.<br><br>
+
+The second step in the application is to enter in all of the CS classes the user has taken, as well as the grade that he/she received (as this is very relevant information for the administrator to know).  The user can list having taken MULTIPLE classes on this page of the application, but the database will treat each class taken as a separate row in the table.<br><br>
+
+A timestamp/valid combination is also used in this table just like in the previous one, but there is one major difference.  Let’s say that one day the user decides to submit information for having taken CS 1410 with a B and CS 2420 with an A-.  He/she submits this information, and a row for each class is recorded in the database with a timestamp and a valid bit of 1.<br><br>
+
+Then the next semester, the user decides to change his/her grade for CS 1410 to an A and also submit new information for having taken CS 3500 with a B+.  Once he/she clicks submit, the database will check to see if he/she has ever submitted information for either of these classes before.  In the case of CS 1410, the user’s old submission for that class will be set as invalid (but still kept in the database).  In the case of CS 3500, the database will also check, and see that there is no previous submission for that specific user for CS 3500, and therefore add a new row with this information and a valid bit of 1.<br><br>
+
+NOTICE the user’s previous submission for 2420 is still set to valid, EVEN THOUGH it has a timestamp that is older than the user’s most recent submission.  This is because the user did not change any information about his/her previous CS2420 submission.  Thus, we must display all classes that a user has taken regardless of when he/she submitted information for them, as long as they are the most recent submissions that the user has given for that specific class.  We cannot simply check for the timestamp/user id combination and pull out the most recent class submission, as the user may have submitted information for previous classes that should still be displayed.  Now when a user wants to know all the classes he/she has applied for, we can simply pull all the ones that have his/her user id as well as a valid bit of 1.<br><br>
+
+The “Class_Applications” table functions similarly to the “Classes_Taken” table, only the user selects which classes he/she want to apply for rather than which ones he/she has taken.  Notice that the key for both of these classes is a combination of the timestamp, user_id, and class_id columns.<br><br>
+
+There is a Course table, which includes the generic information for each course (course_id, dept_name, course_num, credits, and course_details).  There is also a Classes table, which includes information for specific classes taught in a certain term.  The last table is the assignments table, which shows all class/TA relationships.  If a user TA’s for multiple classes, he/she will exist multiple times, and if a class has multiple TA’s, it will exist multiple times.  Thus, the key for this table is the combination of the two columns.<br><br>
+
+
+SCHEMA MODIFICATIONS BASED ON PEER REVIEW<br><br>
+
+
+The valid bit in the “Applicant_Info” table is unnecessary, as there can only be one valid row for each user.  This can simply be checked for by pulling the most recent application for that user from the table.  The valid bit is still necessary in the other two tables, however, as there can be multiple valid rows for each user.<br><br>
+
+The “Courses” table should be renamed to “Course_Info”, and the “Classes” table can be renamed to “Courses” (for clarity’s sake).  Their id’s can also be renamed accordingly.<br><br>
+
+The current bit in the Assignments table will not be needed, as the term/year for that class can be looked up in the “Courses” table.  There should also be a field for “number of TA’s needed” (which can be called “ta_num”) in the “Courses” table.<br><br>
+
+It is probably good practice to have an auto-increment unique key in each table, and so this should also be added.<br><br>
+	
+	</p>
+	
+	</body>
+</html>

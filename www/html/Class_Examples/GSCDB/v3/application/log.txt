@@ -1,0 +1,33 @@
+Mon, 04 Feb 2013 07:16:29 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '178' for key 'PRIMARY'
+
+Mon, 11 Feb 2013 03:29:07 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:29:55 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:32:15 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:35:15 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:35:20 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:35:43 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:36:56 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:37:12 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:37:44 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+
+Mon, 11 Feb 2013 03:39:53 +0100
+SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserID' cannot be null
+

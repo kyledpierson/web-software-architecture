@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+
+<!-- 	This is the webpage for the actual TA application.  It allows the user to enter 
+		information into a form, and then displays the results back to the user via
+		a php script-->
+
+
+<html lang="en">
+  
+  <head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" media="screen" type="text/css" href="http://uofu-cs4540-57.cloudapp.net/Projects/TA1/ta_style.css">
+    
+	<title>TA Application Page</title>
+    
+  </head>
+  
+  <body>
+    
+	<div id="image_container">
+		<img id="image"; src="http://uofu-cs4540-57.cloudapp.net/Projects/TA1/dark_mosaic.png" alt="mosaic"/>
+	</div>
+		
+	<h1>Teaching Assistant Application</h1>
+	
+	<div id="image_container_2">
+		<img id="computer" src="http://uofu-cs4540-57.cloudapp.net/Projects/TA1/computer.png" alt="computer_image">
+	</div>
+	
+	<div id="right_section">
+	</div>
+	
+		<div id="menu">
+		<ul style="list-style-type:none">
+			<a href="http://uofu-cs4540-57.cloudapp.net/Projects/TA1/index.html"><li>Home</li></a>
+			<a href="http://uofu-cs4540-57.cloudapp.net/Projects/TA1/ta_application_form.html"><li>Apply Here</li></a>
+			<a href="http://uofu-cs4540-57.cloudapp.net/Projects/TA1/admin_view.html"><li>Administrator View</li></a>
+			<a href="http://uofu-cs4540-57.cloudapp.net"><li>My Website</li></a>
+		</ul>
+	</div>
+	
+	<h2>Please fill out the form below</h2>
+	
+	<form method="post" action="http://uofu-cs4540-57.cloudapp.net/Projects/TA1/process.php" enctype="multipart/form-data">
+      <fieldset>
+      
+	  <p>
+      <label for="FirstName" class="aligned_box">First Name</label> 
+      <input type="text" id="FirstName" name="FirstName" class="aligned_box"/> 
+      
+	  <label for="LastName" class="aligned_box">Last Name</label> 
+      <input type="text" id="LastName" name="LastName" class="aligned_box"/></p>
+      
+	  <p>
+	  <label for="uNID" class="aligned_box">uNID</label> 
+      <input type="text" id="uNID" name="uNID" class="aligned_box"/>
+      
+	  <label for="Phone" class="aligned_box">Phone Number</label> 
+      <input type="text" id="Phone" name="Phone" class="aligned_box"/></p>
+	  
+	  <p>
+	  <label for="Email" class="aligned_box">Email Address</label> 
+      <input type="text" id="Email" name="Email" class="aligned_box"/>
+	  
+	  <label for="GPA" class="aligned_box">GPA</label>
+      <input type="text" id="GPA" name="GPA" class="aligned_box"/></p>
+      
+	  <p>
+      <input type="radio" name="Academic" id="Academic" value="Freshman" /> 
+      <label for="Academic">Freshman</label>
+	  <br />
+      
+	  <input type="radio" name="Academic" id="Academic" value="Sophomore" /> 
+      <label for="Academic">Sophomore</label>
+	  <br />
+	  
+	  <input type="radio" name="Academic" id="Academic" value="Junior" /> 
+      <label for="Academic">Junior</label>
+	  <br />
+      
+	  <input type="radio" name="Academic" id="Academic" value="Senior" /> 
+      <label for="Academic">Senior</label>
+	  <br />
+	  
+	  <input type="radio" name="Academic" id="Academic" value="Graduate" /> 
+      <label for="Academic">Graduate</label>
+	  <br /></p>
+      
+	  <p>
+      <label for="Classes">Select the CS class for which you wish to TA</label> 
+      <select name="Classes" id="Classes">
+        <option value="None">None</option>
+        <option value="1400">CS 1400</option>
+        <option value="1410">CS 1410</option>
+        <option value="2100">CS 2100</option>
+        <option value="2420">CS 2420</option>
+        <option value="3100">CS 3100</option>
+        <option value="3200">CS 3200</option>
+        <option value="3500">CS 3500</option>
+        <option value="3505">CS 3505</option>
+        <option value="3810">CS 3810</option>
+        <option value="4000">CS 4000</option>
+        <option value="4150">CS 4150</option>
+        <option value="4400">CS 4400</option>
+        <option value="4500">CS 4500</option>
+        <option value="4940">CS 4940</option>
+        <option value="4970">CS 4970</option>
+      </select></p>
+      
+	  <p>
+        <label for="Essay" id="Essay">Why do you think you would be a good TA for this class?</label>
+        <br />
+        <textarea id="Essay" name="Essay" rows="5" cols="30"></textarea>
+      </p>
+	  
+	  <p>
+      <label for="Photo">A photo of you</label> 
+      <input type="file" id="Photo" name="Photo" size="20" /></p>
+      <input type="hidden" name="FormType" value="Form 3" />
+      
+	  <p>
+        <input type="submit" name="SubmitButton" value="Submit" />
+      </p></fieldset>
+	  
+    </form>
+	
+  </body>
+</html>

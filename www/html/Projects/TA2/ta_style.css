@@ -1,0 +1,199 @@
+/* These first two tags set up the conditions of the website */
+
+html {
+	background: url('linen.png');
+	padding-bottom:100px;
+	margin-bottom:100px;
+	overflow-x:hidden;
+	overflow:visible;
+	}
+	
+body { 
+	font: 100% georgia, sans-serif;
+	color: black;
+	overflow-x:hidden;
+	overflow:visible;
+	}
+
+/*This is what I want the default paragraph to look like*/
+p {
+	font-family:Ariel, Helvetica, sans-serif;
+	color:#33cc33;
+	font-size: 16px;
+	font-weight:none;
+
+}
+
+/*I use different headers for different purposes*/
+h1 {
+	font-family: "Courier New", Courier, monospace;
+	color: #33cc33;
+	font-size: 40px;
+	font-weight:none;
+	
+	position:relative;
+	left:50px;
+    top:100px;
+	width:900px;
+	z-index:10;
+}
+
+h2 {
+	font-family:Ariel, Helvetica, sans-serif;
+	color:white;
+	font-size: 24px;
+	font-weight:none;
+	margin-left:20px;
+	padding-left:20px;
+	
+	position:relative;
+	left:50px;
+	top:150px;
+	width:750px;
+	z-index:10;
+}
+
+h3 {
+	font-family:Ariel, Helvetica, sans-serif;
+	color:white;
+	font-size: 18px;
+	text-decoration:underline;
+}
+
+/*This sets the position and specs of the form on the webpage*/
+form {
+	position:relative;
+	width:750px;
+	left:100px;
+	top:150px;
+	color:#33cc33;
+	background-color:black;
+	overflow:visible;
+}
+
+/*Sets the position and specs of the table on the webpage*/
+table {
+	position:relative;
+	width:750px;
+	left:100px;
+	top:150px;
+	table-layout: fixed;
+	overflow:visible;
+}
+
+th {
+	background-color:black;
+	color:#33cc33;;
+}
+
+td {
+	background-color:white;
+    word-wrap:break-word;
+	vertical-align: top;
+	text-align: left;
+}
+
+p label.aligned_box {
+	margin-left:10px;
+    display: inline-block;
+    width: 125px;
+}
+
+p input.aligned_box {
+    width: 210px;
+}
+
+/*The list items are used in the menu on the right side of the screen*/
+li {
+	vertical-align:middle;
+	text-align:center;
+	
+	font-weight: bold; 
+	background-color:#6666ff;
+	color:black;
+	border: 3px ridge gray;
+	
+	height:30px;
+	width:200px;
+}
+
+li:hover {
+	background-color: white;
+	}
+
+/*hyperlink*/
+a:link { 
+	font-weight: bold; 
+	text-decoration: none;
+}
+
+/*Some containers to make sure I can manipulate my images*/
+#image_container {
+    position:absolute;
+	top:0;
+	left:0;
+    height:200px;
+    width:100%;
+	z-index:0;
+	overflow:visible;
+}
+
+#image {    
+    position:relative;
+	height:200px;
+	width:100%;
+	z-index:3;
+	border-bottom: 10px ridge #6666ff;
+}
+
+#image_container_2 {
+    position:absolute;
+	top:0;
+	right:20px;
+    height:200px;
+    width:200px;
+	z-index:0;
+}
+
+#computer {    
+    position:relative;
+	max-height:100%;
+	max-width:100%;
+	z-index:4;
+}
+
+/*The right hand side of the screen*/
+#right_section {
+	background-color:black;
+
+	position:absolute;
+	float:right;
+	top:0px;
+	right:0px;
+	height:150%;
+	width:300px;
+	z-index:-1;
+	
+	overflow:visible;
+}
+
+/*My menu object*/
+#menu {
+	position:relative;
+	float:right;
+	
+	top:200px;
+	right:0px;
+	
+	width:300px;
+	height:200px;
+}
+
+/*The main paragraph*/
+#main_text {
+position:relative;
+float:left;
+
+left:100px;
+top:200px;
+}

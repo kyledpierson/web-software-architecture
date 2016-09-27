@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="ISO-8859-1"/>
+    <title>Simple JSON Example</title>
+    <script src="jquery-1.11.2.min.js"></script>
+    <script src="dform.js"></script>
+    <script src="read_json.js"></script>
+
+<style>
+  h2   {color:blue}
+  p    {color:green}
+  label {display:block; color:green; clear:both;}
+</style>
+
+
+
+    <script type="text/javascript">
+        $(function()         // On document load, query and build the form from a JSON object
+        {
+            $("#myform").dform('form.json', function(data)
+            { 
+                // you can modify form after loading by putting code here....
+                //      this //-> Generated $('#myform')
+                //      data //-> data from path/to/form.json
+
+            });
+        });
+    </script>
+
+
+  </head>
+  <body>
+    <h2>Sample Use of JSON</h2>
+    
+    <form id="myform"></form>
+    
+    <div id="content"> </div>
+    
+  </body>
+</html>

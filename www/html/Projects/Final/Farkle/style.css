@@ -1,0 +1,137 @@
+/* CSS Document */
+
+h1
+{
+	color: #B20000;
+}
+
+#lobby {
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border: 2px solid #000000;
+    padding: 20px; 
+    width: 200px;
+    background-color: #ffffff;
+    /* just in case there no content*/
+    /*padding: 1px 5px 2px;*/
+    margin: 0 auto 1px;
+    margin-top: 1px;
+    width: 90%;
+    /* shadows and rounded borders */
+    
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+body {
+	background: url("Pictures/dice_background.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;	
+}
+/*
+#join_button {
+    font-weight: 700;
+    width: 200px;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+*/
+#join_button {
+	font-weight: 700;
+    width: 200px;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+    background-color: #000000;
+    color: #ffffff;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 25px;
+    height: 50px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+}
+h1, h2, h4 {text-align: center;}
+
+#join_button:hover,
+#join_button:active,
+#join_button:focus {
+    background-color: rgb(104, 145, 162);
+}
+
+
+
+#game{
+	background-color: #d8dae8;
+	background-image: url("http://www.transparenttextures.com/patterns/buried.png");
+	/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+	/*background-color: #d0d0d0;
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    -moz-box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+	height: 300px;
+}
+
+#dis{
+	background-color: #d8dae8;
+	background-image: url("http://www.transparenttextures.com/patterns/buried.png");
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    -moz-box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+}
+
+#m {
+    direction: ltr;
+    height: 26px;
+    font-size: 26px;
+    width: 98%;
+    background-color: #ffffff;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+#m:focus {
+    border-color: rgb(104, 145, 162);
+    outline: 0;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+}
+
+#toggle
+{
+	margin:20px;
+}

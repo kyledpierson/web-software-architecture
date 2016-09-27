@@ -1,0 +1,55 @@
+
+application/authentication.php,28
+function verifyLogin 6,133
+
+application/db.php,265
+function openDBConnection(4,47
+function registerNewUser(12,291
+function getCookieTypes(54,1478
+function getRealName(75,2006
+function placeOrder(99,2493
+function &getAllOrders(getAllOrders138,3665
+function shipOrder(193,5368
+function reportDBError(214,5868
+
+application/functions.php,211
+function sticky 4,51
+function &getShoppingCart getShoppingCart11,198
+function checkQuantity 22,489
+function createCookieOptions 52,1289
+function createCartTable 63,1638
+function createCookieImage 74,2043
+
+views/order.php,51
+		function (23,600
+function checkQuantity 27,726
+
+manageOrders.php,0
+
+checkout.php,0
+
+viewcart.php,0
+
+register.php,0
+
+views/badRole.php,0
+
+views/manageOrders.php,0
+
+views/checkout.php,0
+
+views/viewcart.php,0
+
+views/register.php,0
+
+views/checkedout.php,0
+
+views/registered.php,0
+
+views/error.php,0
+
+order.php,0
+
+logout.php,0
+
+application/login.php,0

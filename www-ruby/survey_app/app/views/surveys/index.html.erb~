@@ -1,0 +1,39 @@
+<h1>Listing articles</h1>
+
+<table class='table'>
+  <tr>
+    <th>Title</th>
+    <th>Question</th>
+    <th>Answers</th>
+  </tr>
+  
+  <% @surveys.each do |survey| %>
+  <tr>
+    <td><%= survey.title %></td>
+    <td><%= survey.question %></td>
+    
+    <td>Yes: <%= if ((survey.yes + survey.no) == 0.0)
+                 0
+                 else
+                 (100*survey.yes/(survey.yes + survey.no)).round
+                 end %>%</td>
+    <td>No: <%= if ((survey.yes + survey.no) == 0.0)
+                0
+                else
+                (100*survey.no/(survey.yes + survey.no)).round
+                end %>%</td>
+    
+  </tr>
+  <tr>
+    <td><%= link_to 'Delete', survey_path(survey), class: "btn btn-danger", id: "white_body", method: 'delete', data: { confirm: 'Are you sure?' }%></td>    
+
+    <td></td>
+
+    <td><%= link_to 'Yes',  survey_yes_path(survey), class: "btn btn-success",  id: "white_body", method: 'post' %></td>
+ 
+   <td><%= link_to 'No', survey_no_path(survey), class: "btn btn-primary", id: "white_body", method: 'post' %></td>
+    
+  </tr>
+  
+  <% end %>
+</table>

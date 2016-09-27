@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+   Original code by Gurpreet
+   - http://techie-notebook.blogspot.com/2012/08/pretty-fractal-trees-using-html-5.html
+
+   Modified by H. James de St. Germain
+   
+   
+   note: for other cool things see: http://codepen.io/Sheepeuh/pen/cFazd
+-->
+
+
+<head>
+<meta charset="ISO-8859-1">
+<title> HTML5 Canvas Example</title>
+
+<script type="text/javascript" src="snow.js"></script>
+<script type="text/javascript" src="tree.js"></script>
+
+
+<script type="text/javascript">
+/**
+ * once we are loaded, darw the initial tree and initialize
+ * the snow data structure. 
+ */
+function start_all()
+   {
+    var main_canvas = document.getElementById('the_canvas');
+    draw_tree( main_canvas.width, main_canvas.height );
+     init_snow( main_canvas, main_canvas.width, main_canvas.height );
+   }
+
+/**
+ * button interface to draw tree
+ */
+function redraw_tree()
+{
+	var main_canvas = document.getElementById('the_canvas');
+    draw_tree( main_canvas.width, main_canvas.height );
+}
+
+/**
+ * Change the canvas size so that it fits on bigger and smaller screens 
+ *
+ */
+function resize_canvas()
+{
+    var max_length = document.getElementById("canvas_size").value;
+    var main_canvas = document.getElementById('the_canvas');
+    main_canvas.width  = max_length  * 10/8;
+    main_canvas.height = max_length;
+    
+    redraw_tree();
+}
+
+
+
+/** 
+ * on startup, call the draw function
+ */
+
+window.onload = start_all;
+</script>
+
+ 
+<style type="text/css">
+  hidden : { display: none; }
+
+   #the_canvas 
+    {
+      position: absolute;
+      top : 10;
+      left : 200;
+      border: 1px solid white;
+      background-color: black;
+    }
+    
+   #controls
+    {
+      float: left;
+      border: 1px solid black;
+    }
+</style>
+ 
+</head>
+ 
+<body>
+
+  <div id="controls">
+    <h2> Controls </h2>
+    <button type="button" onclick="redraw_tree()"> Draw Tree </button><br/>
+    <button type="button" onclick="clear_canvas()"> Clear Canvas </button><br/>
+    <button type="button" onclick="toggle_apples()"> Toggle Apples </button><br/>
+    <button type="button" onclick="toggle_flowers()"> Toggle Flowers </button><br/>
+    <button type="button" onclick="toggle_snow_state()"> Toggle Snow </button>
+     <p> Tree Segment Length </p>
+     <input id="tree_seg_length" type="range" min="5" max="25" value="15"
+            onchange="redraw_tree()"/>
+     <p id="slider_value"></p>
+     <p> Tree Segment Length </p>
+     <input id="canvas_size" type="range" min="200" max="1000" value="500" step="100"
+            onchange="resize_canvas()"/>
+  </div>
+
+  <canvas id="the_canvas"  width="1000" height="800" />
+
+
+
+</body>
+</html>

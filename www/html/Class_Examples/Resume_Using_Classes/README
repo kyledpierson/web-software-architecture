@@ -1,0 +1,41 @@
+The following code is a demonstration of how one would 
+manage a "resume" generator using PHP classes.
+
+1) Notice use of FILE hierarchy
+
+    - CSS files in separate folder
+    - Use of Models folder to hold classes
+
+2) Notice use of navigation bar that "highlights" current page link
+
+3) Notice use of getParam funciton which simplifies the 
+   isset code for requests
+
+
+4) Notice the use of the load_session function to handle startup
+
+5) Notice the use of the build_html_page_header function to
+   get rid of replicated code.
+
+6) Notice use of session_destroy (in clear_session.php) to 
+   clear the session of data
+
+7) Notice how most pages separate the PHP from the HTML, even when
+   in the same file.
+
+8) Minor use of JQuery/JavaScript to make posting jobs more efficient/have
+   a better UI.
+
+9) Use of classes to make code easier to use and maintain
+
+   class History --> contains all information about saved jobs
+                     can output HTML to show this
+   class Job --> contains dates and title
+                 can output javascript to generate HTML for this
+   class Navigation_Bar --> keeps track of the current page
+                            generates HTML to show this
+   class Person --> keeps track of a persons details
+                    has some error checking functions
+   class Resume --> keeps track of person and jobs
+                    generates resume output HTML
+                    has place holder for a validation method

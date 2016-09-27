@@ -1,0 +1,411 @@
+
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="utf-8" http-equiv="encoding"/>
+    <title>Button Example </title>
+    
+    <!-- THIS FIRST -->
+    <script src="jquery-1.11.2.min.js"></script> <!-- 1 - JQUERY -->
+    <script src="pixi.dev.js"></script>  <!-- 2 - Pixi -->
+    <script src="button.js"></script>
+    
+</head>
+
+<body>
+
+  <div class="c4"> </div>
+
+
+  <script>
+var stage;  // pixi stage - the drawing area
+var renderer;   // create a renderer instance
+var button2;
+var faceForDieOne;
+var faceForDieTwo;
+var faceForDieThree;
+var faceForDieFour;
+var faceForDieFive;
+var faceForDieSix;
+var cubeForDieOne;
+var cubeForDieTwo;
+var cubeForDieThree;
+var cubeForDieFour;
+var cubeForDieFive;
+var cubeForDieSix;
+var player1Name;
+var player2Name;
+var player3Name;
+var player4Name;
+var player1Score;
+var player2Score;
+var player3Score;
+var player4Score;
+var shaker;
+var bankPoints;
+var currentScoreTextField = new PIXI.Text("Points", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var rollCount = 0;
+var p1text_field_ = new PIXI.Text("Player1", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p2text_field_ = new PIXI.Text("Player2", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p3text_field_ = new PIXI.Text("Player3", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p4text_field_ = new PIXI.Text("Player4", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p1Scoretext_field_ = new PIXI.Text("0", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p2Scoretext_field_ = new PIXI.Text("0", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p3Scoretext_field_ = new PIXI.Text("0", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p4Scoretext_field_ = new PIXI.Text("0", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var pointsScore = new PIXI.Text("0", {font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+var p1PositionY=(window.innerHeight)-(window.innerHeight);
+var p2PositionY=(window.innerHeight)-(window.innerHeight)+100;
+var p3PositionY=(window.innerHeight)-(window.innerHeight)+200;
+var p4PositionY=(window.innerHeight)-(window.innerHeight)+300;
+var players = [p1text_field_, p2text_field_, p3text_field_, p4text_field_];
+var namePositionsY = [p1PositionY, p2PositionY, p3PositionY, p4PositionY];
+var scores = [p1Scoretext_field_, p2Scoretext_field_, p3Scoretext_field_, p4Scoretext_field_];
+var face = [faceForDieOne, faceForDieTwo, faceForDieThree, faceForDieFour, faceForDieFive, faceForDieSix];
+var cube = [cubeForDieOne, cubeForDieTwo, cubeForDieThree, cubeForDieFour, cubeForDieFive, cubeForDieSix];
+var faceCallBack = [cubefaceone, cubefacetwo, cubefacethree, cubefacefour, cubefacefive, cubefacesix];
+var cubeCallBack = [diefaceOne, diefaceTwo, diefaceThree, dicefaceFour, diefaceFive, diefaceSix];
+var facePositionY = (window.innerHeight)-100;
+var lockRoll = false;
+var col = window.innerWidth/2;
+var col2Start = col;
+var playersCol = col/2;
+var scoreX = playersCol+(playersCol/2);
+var playerRows = window.innerHeight/7;
+var xScale = (window.innerWidth)/1010;
+var yScale = (window.innerHeight)/741;
+var cubeScale = Math.min(xScale, yScale);
+
+stage = new PIXI.Stage(0x57A52E);
+stage.interactive = true;
+renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight, null);
+document.body.appendChild(renderer.view);     // add the renderer view element to the DOM
+
+requestAnimFrame( animate );
+
+function currentPlayer(currentPlayer)
+{
+    var temp = currentPlayer;
+    var previousPlayer = temp-1;
+    if (previousPlayer == 0)
+    {
+        previousPlayer = 4;
+    }
+    var prevTextField = players[previousPlayer-1];
+    var prevScore = scores[previousPlayer-1];
+    var currTextField = players[currentPlayer-1];
+    var currScore = scores[currentPlayer-1];
+
+    prevTextField.setStyle({font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+    prevScore.setStyle({font:"60pt Arial", align:"center", fill:"white", dropShadow:"true"});
+
+    currTextField.setStyle({font:"60pt Arial", align:"center", fill:"red", dropShadow:"true"});
+    currScore.setStyle({font:"60pt Arial", align:"center", fill:"red", dropShadow:"true"});
+    
+}
+function setPlayerNames(playerNames)
+{
+    for(var i = 0; i<4; i++)
+    {
+        if(playerNames[i]!="")
+        {
+            players[i].setText(playerNames[i]);
+        }
+        players[i].position.y = (window.innerHeight)-(window.innerHeight) +((i*100) * yScale);
+        players[i].scale.x = cubeScale;
+        players[i].scale.y = cubeScale;
+        players[i].size = cubeScale;
+        stage.addChild(players[i]);
+    }
+}
+function setScores(playerScores)
+{
+    for(var i = 0; i<4; i++)
+    {
+        scores[i].setText(playerScores[i]);
+        scores[i].position.y = (window.innerHeight)-(window.innerHeight) +((i*100) * yScale);
+        scores[i].position.x = scoreX;
+        scores[i].scale.x = cubeScale;
+        scores[i].scale.y = cubeScale;
+        stage.addChild(scores[i]);
+        
+    }
+}
+function diefaceOne()
+{
+
+    stage.removeChild(cube[0]);
+    stage.addChild(face[0]);
+    
+}
+function cubefaceone()
+{
+    stage.addChild(cube[0]);
+    stage.removeChild(face[0]);
+}
+function diefaceTwo()
+{
+    stage.removeChild(cube[1]);
+    stage.addChild(face[1]);
+}
+function cubefacetwo()
+{
+    stage.addChild(cube[1]);
+    stage.removeChild(face[1]);
+}
+function diefaceThree()
+{
+    stage.removeChild(cube[2]);
+    stage.addChild(face[2]);
+}
+function cubefacethree()
+{
+    stage.addChild(cube[2]);
+    stage.removeChild(face[2]);
+}
+function dicefaceFour()
+{
+    stage.removeChild(cube[3]);
+    stage.addChild(face[3]);
+}
+function cubefacefour()
+{
+    stage.addChild(cube[3]);
+    stage.removeChild(face[3]);
+}
+function diefaceFive()
+{
+    stage.removeChild(cube[4]);
+    stage.addChild(face[4]);
+}
+function cubefacefive()
+{
+    stage.addChild(cube[4]);
+    stage.removeChild(face[4]);
+}
+function diefaceSix()
+{
+    stage.removeChild(cube[5]);
+    stage.addChild(face[5]);
+}
+function cubefacesix()
+{
+    stage.addChild(cube[5]);
+    stage.removeChild(face[5]);
+}
+function roll_all_dice()
+{
+    if(!lockRoll)
+    {
+        var myDice = [6,4,6,6,6,6];
+        roll_dice(myDice);
+        var names = ["jim", "john", "jim", "fred"];
+        var score = [1,2,3,4];
+        setPlayerNames(names);
+        setScores(score);
+
+        currentPlayer(1);
+        current_points(1);
+    }
+    else
+    {
+        var score2 = [2,20,5,3];
+        setScores(score2);
+        currentPlayer(2);
+        var myDice2 = [1,2,0,4,5,6];
+        otherPlayers(myDice2);
+    }
+    
+}
+function current_points(points)
+{
+    currentScoreTextField.position.y = (window.innerHeight)-(window.innerHeight)+(400 * yScale);
+    currentScoreTextField.scale.x = cubeScale;
+    currentScoreTextField.scale.y = cubeScale;
+    stage.addChild(currentScoreTextField);
+    pointsScore.position.y = (window.innerHeight)-(window.innerHeight)+(400 * yScale);
+    pointsScore.position.x = scoreX;
+    pointsScore.scale.x = cubeScale;
+    pointsScore.scale.y = cubeScale;
+    pointsScore.setText(points);
+    stage.addChild(pointsScore);
+    bankPoints = new Button_Sprite( stage, 418, 70, bank_points, 30, false, 7);
+    bankPoints.scale.x = 2.5*cubeScale;
+    bankPoints.scale.y = 2*cubeScale;
+    bankPoints.position.y = (window.innerHeight)-(window.innerHeight)+(500 * yScale);
+
+}
+
+function bank_points()
+{
+
+}
+
+
+function start_button_example()
+{
+    shaker = new Button_Sprite( stage, 20, 20, roll_all_dice, 50, false,0);
+    
+
+    shaker.position.x = (window.innerWidth)-(300 * xScale);
+    shaker.position.y =  (window.innerHeight)-(300 * yScale);
+    shaker.scale.x = cubeScale;
+    shaker.scale.y = cubeScale;
+    
+}
+function roll_dice(dice)
+{
+    if (!lockRoll)
+    {
+        for(var i = 0; i<6; i++)
+        {
+            if(dice[i] > 0)
+            {
+                 face[i] = new Button_Sprite(stage, 20, 20, faceCallBack[i], 1, true, dice[i]);
+                face[i].position.x = 50 + ((i*100) * xScale);
+                face[i].position.y = playerRows * 6; //facePositionY / yScale;
+                face[i].scale.x = 0.25 * cubeScale ;
+                face[i].scale.y = 0.25 * cubeScale;
+                stage.removeChild(face[i]);
+
+                cube[i] = new Button_Sprite(stage, 20, 20, cubeCallBack[i], 7, false, dice[i]);
+                cube[i].position.x = (window.innerWidth/2)+(window.innerWidth/4)+(((i%2)*(100)) * xScale);
+                cube[i].position.y = (window.innerHeight)-(window.innerHeight)+((i*50) * yScale); 
+                cube[i].scale.y = 0.25 * cubeScale;
+                cube[i].scale.x = 0.25 * cubeScale;
+            }
+            else
+            {
+                stage.removeChild(face[i]);
+                stage.removeChild(cube[i]);
+            }
+            
+
+        }
+        lockRoll = true;
+        rollCount++;
+    }
+    
+
+
+}
+function otherPlayers(dice)
+{
+
+    //var texture = PIXI.Texture.fromImage("../Button/button.png");
+    stage.removeChild(shaker);
+    for(var i = 0; i<6; i++)
+    {
+        stage.removeChild(cube[i]);
+        stage.removeChild(face[i]);
+    }
+    
+    stage.removeChild(currentScoreTextField);
+    stage.removeChild(pointsScore);
+    stage.removeChild(bankPoints);
+     shaker = new PIXI.Sprite(setTexture(0));
+    shaker.position.x = (window.innerWidth)-(300 * xScale);
+    shaker.position.y = (window.innerHeight)-(300 * yScale);
+    shaker.scale.x = cubeScale;
+    shaker.scale.y = cubeScale;
+    stage.addChild(shaker);
+     for(var i = 0; i<6; i++)
+        {
+                if(dice[i] != 0)
+                {
+                    cube[i] = new PIXI.Sprite(setTexture(dice[i]));
+                    cube[i].position.x = (window.innerWidth/2)+(window.innerWidth/4)+(((i%2)*(100)) * xScale);
+                    cube[i].position.y = (window.innerHeight)-(window.innerHeight)+((i*50) * yScale); 
+                    cube[i].scale.y = 0.25 * cubeScale;
+                    cube[i].scale.x = 0.25 * cubeScale;
+                    stage.addChild(cube[i]);
+                }
+        }
+
+   
+
+   
+}
+function setTexture(dieNumber)
+{
+
+    if(dieNumber == 0)
+    {
+        var texture = PIXI.Texture.fromImage("shaker.png");
+        return texture;
+    }
+    if(dieNumber == 1)
+    {
+        var texture = PIXI.Texture.fromImage("die1.png");
+        return texture;
+    }
+    if(dieNumber == 2)
+    {
+        var texture = PIXI.Texture.fromImage("die2.png");
+        return texture;
+    }
+    if(dieNumber == 3)
+    {
+        var texture = PIXI.Texture.fromImage("die3.png");
+        return texture;
+    }
+    if(dieNumber == 4)
+    {
+        var texture = PIXI.Texture.fromImage("die4.png");
+        return texture;
+    }
+    if(dieNumber == 5)
+    {
+        var texture = PIXI.Texture.fromImage("die5.png");
+        return texture;
+    }
+    if(dieNumber == 6)
+    {
+        var texture = PIXI.Texture.fromImage("die6.png");
+        return texture;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// this function is called before every browser/canvas repaint
+// approximately 30 or 60 times per second
+//
+// by putting requestAnimFrame(animate) in here, we cause an animation loop
+//
+function animate()
+{
+    requestAnimFrame(animate);
+
+    renderer.render(stage);     // render the stage
+
+}
+
+$(function () 
+{
+
+    var loader = new PIXI.AssetLoader(["die1.png","die2.png","die3.png","die4.png","die5.png","die6.png","selectedDie1.png","selectedDie2.png","selectedDie3.png","selectedDie4.png","selectedDie5.png","selectedDie6.png", "oneFace.png","twoFace.png","threeFace.png","fourFace.png","fiveFace.png","sixFace.png","selectedOneFace.png", "selectedTwoFace.png","selectedThreeFace.png","selectedFourFace.png","selectedFiveFace.png","selectedSixFace.png","shaker.png","selectedShaker.png"]);
+//var loader = new PIXI.AssetLoader(["die1.png","selectedDie1.png","die2.png","selectedDie2.png","die3.png","selectedDie3.png","die4.png","selectedDie4.png" "shaker.png","selectedShaker.png"]);
+loader.onComplete = start_button_example;
+loader.load();
+
+});
+
+</script>
+</body>
+
+</html>
